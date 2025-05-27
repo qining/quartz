@@ -18,7 +18,7 @@ const config: QuartzConfig = {
     //   provider: "plausible",
     // },
     locale: "en-US",
-    baseUrl: "qining.github.io/quartz",
+    baseUrl: "qining.github.io/quartz/",
     ignorePatterns: ["private", "journal", "templates", ".obsidian", ".foam"],
     defaultDateType: "modified",
     theme: {
