@@ -5,7 +5,21 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [
+    Component.Comments({
+      provider: 'giscus',
+      options: {
+        // from data-repo
+        repo: 'qining/quartz',
+        // from data-repo-id
+        repoId: 'R_kgDOOxL_Zg',
+        // from data-category
+        category: 'Announcements',
+        // from data-category-id
+        categoryId: 'DIC_kwDOOxL_Zs4CrAvV',
+      }
+    }),
+  ],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/jackyzha0/quartz",
@@ -38,11 +52,19 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      mapFn: (node) => {
+        // Capitalize the first letter of the node's display name
+        node.displayName = node.displayName.at(0)?.toUpperCase() + node.displayName.slice(1)
+        return node
+      },
+    }),
   ],
   right: [
     Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
+    // Uncomment this line to put recent posts on the right on desktop.
+    // Component.DesktopOnly(Component.RecentNotes({ limit: 5 })),
     Component.Backlinks(),
   ],
 }
@@ -62,7 +84,13 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      mapFn: (node) => {
+        // Capitalize the first letter of the node's display name
+        node.displayName = node.displayName.at(0)?.toUpperCase() + node.displayName.slice(1)
+        return node
+      },
+    }),
   ],
   right: [],
 }

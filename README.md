@@ -1,3 +1,9 @@
+This is an experiment to see whether Quartz can be used as a renderer for my Foam notes.
+
+https://zheteng.pages.dev is backed by my notes + this Quartz repo.
+
+Below is the original README.md for the Quartz project.
+---
 # Quartz v4
 
 > “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
