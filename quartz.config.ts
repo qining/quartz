@@ -8,16 +8,18 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
-    pageTitleSuffix: "",
+    pageTitle: "anth0ny1u",
+    pageTitleSuffix: "Quartz 4",
     enableSPA: true,
     enablePopovers: true,
-    analytics: {
-      provider: "plausible",
-    },
+    // Unsure how to use this yet.
+    analytics: null,
+    // analytics: {
+    //   provider: "plausible",
+    // },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    baseUrl: "anth0ny1u.cc",
+    ignorePatterns: ["private", "journal", "templates", ".obsidian", ".foam"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
