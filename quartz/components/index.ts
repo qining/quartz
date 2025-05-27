@@ -12,6 +12,7 @@ import Spacer from "./Spacer"
 import TableOfContents from "./TableOfContents"
 import Explorer from "./Explorer"
 import TagList from "./TagList"
+import TagCloud from "./TagCloud"
 import Graph from "./Graph"
 import Backlinks from "./Backlinks"
 import Search from "./Search"
@@ -38,6 +39,7 @@ export {
   TableOfContents,
   Explorer,
   TagList,
+  TagCloud,
   Graph,
   Backlinks,
   Search,
@@ -51,3 +53,4 @@ export {
   Flex,
   ConditionalRender,
 }
+export { default as Waline } from "./Waline.tsx"
