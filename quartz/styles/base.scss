@@ -152,7 +152,11 @@ a {
 }
 
 .page {
-  max-width: calc(#{map.get($breakpoints, desktop)} + 300px);
+  // Change the max width from desktop-breakpoint + 300px to 
+  // desktop-breakpoint + 1400px. Note that the desktop breakpoint may also be
+  // changed.
+  // Default: max-width: calc(#{map.get($breakpoints, desktop)} + 300px);
+  max-width: calc(#{map.get($breakpoints, desktop)} + 1400px);
   margin: 0 auto;
   & article {
     & > h1 {
