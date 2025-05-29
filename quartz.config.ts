@@ -20,7 +20,7 @@ const config: QuartzConfig = {
     locale: "en-US",
     baseUrl: "anth0ny1u.pages.dev",
     ignorePatterns: ["private", "journal", "templates", ".obsidian", ".foam"],
-    defaultDateType: "created",
+    defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
