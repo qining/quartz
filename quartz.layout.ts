@@ -45,15 +45,12 @@ export const defaultContentPageLayout: PageLayout = {
         return node
       },
     }),
-    // Put the table of contents on the left on desktop.
-    Component.DesktopOnly(Component.TableOfContents()),
   ],
   right: [
     Component.Graph(),
+    Component.DesktopOnly(Component.TableOfContents()),
     // Put recent posts on the right on desktop.
     Component.DesktopOnly(Component.RecentNotes({ limit: 5 })),
-    // Do not put the table of contents on the right.
-    // Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
 }
