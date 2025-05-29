@@ -29,9 +29,25 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
     if (text) {
       const segments: (string | JSX.Element)[] = []
 
+      // Modified as https://quartz.eilleeenz.com/Quartz-customization-log#putting-date-created--modified-on-content-pages-but-not-index
       if (fileData.dates) {
-        segments.push(<Date date={getDate(cfg, fileData)!} locale={cfg.locale} />)
+        //   segments.push(<Date date={getDate(cfg, fileData)!} locale={cfg.locale} />)
+        segments.push(<>
+          Created: <Date date={_getDateCustom(cfg, fileData, 'created')!} locale={cfg.locale} />
+        </>)
+        const datecreatedValue = _getDateCustom(cfg, fileData, 'created');
+        const datemodifiedValue = _getDateCustom(cfg, fileData, 'modified');
+        // Compare the actual date values (ignoring the JSX components)
+        const areDatesNotEqual = datecreatedValue?.getTime() !== datemodifiedValue?.getTime();
+        if (areDatesNotEqual) {
+          segments.push(<>
+            Modified: <Date date={_getDateCustom(cfg, fileData, 'modified')!} locale={cfg.locale} />
+          </>
+          )
+        }
       }
+
+
 
       // Display reading time if enabled
       if (options.showReadingTime) {

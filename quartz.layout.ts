@@ -40,14 +40,20 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.Explorer({
       mapFn: (node) => {
+        // Capitalize the first letter of the node's display name
         node.displayName = node.displayName.at(0)?.toUpperCase() + node.displayName.slice(1)
         return node
       },
     }),
+    // Put the table of contents on the left on desktop.
+    Component.DesktopOnly(Component.TableOfContents()),
   ],
   right: [
     Component.Graph(),
-    Component.DesktopOnly(Component.TableOfContents()),
+    // Put recent posts on the right on desktop.
+    Component.DesktopOnly(Component.RecentNotes({ limit: 10 })),
+    // Do not put the table of contents on the right.
+    // Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
 }
@@ -69,6 +75,7 @@ export const defaultListPageLayout: PageLayout = {
     }),
     Component.Explorer({
       mapFn: (node) => {
+        // Capitalize the first letter of the node's display name
         node.displayName = node.displayName.at(0)?.toUpperCase() + node.displayName.slice(1)
         return node
       },
