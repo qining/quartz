@@ -38,9 +38,7 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer({
-      filterFn: undefined, // apply no filter function, every file and folder will visible
-    }),
+    Component.Explorer(),
   ],
   right: [
     Component.Graph(),
@@ -64,9 +62,7 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer({
-      filterFn: undefined, // apply no filter function, every file and folder will visible
-    }),
+    Component.Explorer(),
   ],
   right: [],
 }
