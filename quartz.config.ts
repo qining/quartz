@@ -8,11 +8,11 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "anth0ny1u",
-    pageTitleSuffix: "Quartz 4",
+    pageTitle: "折腾 Zhēteng",
+    pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
-    // Unsure how to use this yet.
+    // Defer the use of this yet.
     analytics: null,
     // analytics: {
     //   provider: "plausible",
@@ -20,7 +20,7 @@ const config: QuartzConfig = {
     locale: "en-US",
     baseUrl: "anth0ny1u.pages.dev",
     ignorePatterns: ["private", "journal", "templates", ".obsidian", ".foam"],
-    defaultDateType: "modified",
+    defaultDateType: "created",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
