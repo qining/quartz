@@ -38,7 +38,12 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      mapFn: (node) => {
+        node.displayName = node.displayName.at(0)?.toUpperCase() + node.displayName.slice(1)
+        return node
+      },
+    }),
   ],
   right: [
     Component.Graph(),
@@ -62,7 +67,12 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      mapFn: (node) => {
+        node.displayName = node.displayName.at(0)?.toUpperCase() + node.displayName.slice(1)
+        return node
+      },
+    }),
   ],
   right: [],
 }
