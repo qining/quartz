@@ -51,7 +51,7 @@ export const defaultContentPageLayout: PageLayout = {
   right: [
     Component.Graph(),
     // Put recent posts on the right on desktop.
-    Component.DesktopOnly(Component.RecentNotes({ limit: 10 })),
+    Component.DesktopOnly(Component.RecentNotes({ limit: 5 })),
     // Do not put the table of contents on the right.
     // Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
