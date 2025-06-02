@@ -47,7 +47,8 @@ export const defaultContentPageLayout: PageLayout = {
     }),
   ],
   right: [
-    Component.Graph(),
+    // Change local graph depth to 2
+    Component.Graph({ localGraph: { depth: 2, } }),
     Component.DesktopOnly(Component.TableOfContents()),
     // Uncomment this line to put recent posts on the right on desktop.
     // Component.DesktopOnly(Component.RecentNotes({ limit: 5 })),
