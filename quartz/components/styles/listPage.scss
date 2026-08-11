@@ -13,6 +13,14 @@ li.section-li {
     display: grid;
     grid-template-columns: fit-content(8em) 3fr 1fr;
 
+    // Ensure all list items have uniform height regardless of tag count
+    // Without this, items with many tags would be taller than items with few tags
+    min-height: 3rem;
+
+    // Vertically center all content (date, title, tags) within the row
+    // This makes items with fewer tags look balanced instead of top-aligned
+    align-items: center;
+
     @media all and ($mobile) {
       & > .tags {
         display: none;
@@ -26,6 +34,98 @@ li.section-li {
     & .meta {
       margin: 0 1em 0 0;
       opacity: 0.6;
+    }
+
+    & > .tags {
+      // Hide tags that don't fit in the allocated space instead of wrapping to new line
+      // This prevents height variations caused by tag wrapping
+      overflow: hidden;
+
+      // Limit tags container to approximately one line of text height
+      // Tags that exceed this height will be clipped by overflow: hidden above
+      max-height: 1.8rem;
+
+      // Position relative so hover expansion can position absolutely if needed
+      position: relative;
+
+      // Show help cursor to indicate tags area is interactive on hover
+      cursor: help;
+
+      // Add LARGE invisible padding to increase hover-sensitive area significantly
+      // This makes it much more forgiving when mouse moves around
+      // The padding is invisible but still captures hover events
+      padding: 0.8rem 1rem;
+      margin: -0.8rem -1rem;  // Negative margin to offset padding (no layout shift)
+
+      // Smooth transition when expanding/collapsing
+      // LONGER delay (0.3s) before tooltip disappears, making it much less twitchy
+      // User can briefly move mouse out and back in without losing the tooltip
+      transition: max-height 0.15s ease-in-out 0.15s;  // 0.15s delay before collapse
+
+      // CRITICAL: Create invisible background layer that captures ALL hover events
+      // This pseudo-element fills the entire tags container including gaps between tags
+      // Without this, hovering in whitespace/gaps between tags loses hover state
+      &:before {
+        content: "";
+        position: absolute;
+        top: -0.8rem;      // Match padding size
+        left: -1rem;       // Match padding size
+        right: -1rem;      // Match padding size
+        bottom: -0.8rem;   // Match padding size
+        pointer-events: auto;  // Critical: this layer captures hover
+        z-index: -1;       // Behind visible content but still captures events
+      }
+
+      // CRITICAL: Fill gaps between tag items to prevent hover loss
+      // Without this, hovering in whitespace between tags cancels hover state
+      & > li {
+        // Make each list item fill vertical space
+        display: inline-flex;
+        align-items: center;
+
+        // Ensure pointer events work on list items (not just the links inside)
+        pointer-events: auto;
+
+        // Add invisible padding to list items to reduce gaps
+        // This creates an overlapping hover-sensitive area
+        padding: 0.2rem 0;
+
+        // Ensure tag links also capture hover and fill space
+        & > a {
+          pointer-events: auto;
+
+          // CRITICAL: Override tag link margins to eliminate dead zones in gaps
+          // The small margins between tags create gaps where hover is lost
+          // By removing margins, tags become continuous (hover-wise)
+          margin: 0 !important;
+
+          // Add padding instead of margin for spacing
+          // Padding is part of the element, so it captures hover
+          padding: 0.2rem 0.5rem !important;
+        }
+      }
+
+      // On hover, expand to show all tags in a floating container
+      &:hover {
+        // Remove overflow and height constraints to show all tags
+        overflow: visible;
+        max-height: none;
+
+        // Float above other content so expanded tags don't push other elements
+        z-index: 100;
+
+        // Visual styling for the expanded tooltip
+        background: var(--light);
+        border: 1px solid var(--lightgray);
+        border-radius: 4px;
+
+        // LARGE padding when expanded provides generous buffer zone
+        // Makes it very hard to accidentally lose hover while moving mouse
+        padding: 0.8rem 1rem;
+        margin: -0.8rem -1rem;  // Negative margin to offset padding
+
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);  // Stronger shadow for better visibility
+      }
     }
   }
 }

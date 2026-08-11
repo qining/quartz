@@ -53,6 +53,10 @@ export default (() => {
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+        {/* Tag for Google Search Console */
+          <meta name="google-site-verification" content="nDRrl2Z9SpvMEENhjNqE-7z3O1MvvyMf1vXxo0jqJf0" />
+        }
+
         <meta name="og:site_name" content={cfg.pageTitle}></meta>
         <meta property="og:title" content={title} />
         <meta property="og:type" content="website" />

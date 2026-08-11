@@ -1,0 +1,41 @@
+@use "../../styles/variables.scss" as *;
+
+.tag-cloud {
+  margin: 2rem 0;
+
+  h3 {
+    margin: 0 0 1rem 0;
+  }
+
+  .tag-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    line-height: 1.8;
+
+    .tag-list-item {
+      text-decoration: none;
+      color: var(--secondary);
+      transition: color 0.2s ease;
+      white-space: nowrap;
+
+      &:hover {
+        color: var(--tertiary);
+      }
+
+      .tag-name {
+        margin-right: 0.3em;
+      }
+
+      .tag-count {
+        opacity: 0.7;
+      }
+
+      &:not(:last-child):after {
+        content: ",";
+        margin-right: 0.5em;
+        color: var(--gray);
+      }
+    }
+  }
+}

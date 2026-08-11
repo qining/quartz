@@ -9,7 +9,8 @@
  */
 $breakpoints: (
   mobile: 800px,
-  desktop: 1200px,
+  // Default: desktop: 1200px,
+  desktop: 1400px,
 );
 
 $mobile: "(max-width: #{map.get($breakpoints, mobile)})";
@@ -22,6 +23,8 @@ $topSpacing: 6rem;
 $boldWeight: 700;
 $semiBoldWeight: 600;
 $normalWeight: 400;
+// More space for the side pannels on desktop
+$desktopSidePanelWidth: 400px;
 
 $mobileGrid: (
   templateRows: "auto auto auto auto auto",
@@ -48,7 +51,9 @@ $tabletGrid: (
 );
 $desktopGrid: (
   templateRows: "auto auto auto",
-  templateColumns: "#{$sidePanelWidth} auto #{$sidePanelWidth}",
+  // Use the desktop side panel width for more space for the side panels
+  // Default: templateColumns: "#{$sidePanelWidth} auto #{$sidePanelWidth}",
+  templateColumns: "#{$desktopSidePanelWidth} auto #{$desktopSidePanelWidth}",
   rowGap: "5px",
   columnGap: "5px",
   templateAreas:
